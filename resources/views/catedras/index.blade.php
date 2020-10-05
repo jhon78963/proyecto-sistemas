@@ -47,33 +47,39 @@
                 <thead class="thead-dark">
                 <tr>
                     <th class="text-center" scope="col">Código</th>
+                    <th class="text-center" scope="col">Año Escolar</th>
+                    <th class="text-center" scope="col">Docente</th>
                     <th class="text-center" scope="col">Curso</th>
-                    <th class="text-center" scope="col">Nivel</th>
-                    <th class="text-center" scope="col">Grado</th>
+                    <th class="text-center" scope="col">Seccion</th>
+
     
                 </tr>
                 </thead>
                 <tbody>
-                    @if ($cursos->count())
-                        @foreach($cursos as $itemcurso)
+                    @if ($catedra->count())
+                        @foreach($catedra as $itemcatedra)
                             <tr>
-                                <td class="text-center">{{$itemcurso->CODIGO}}</td>
-                                <td class="text-center">{{$itemcurso->CURSO}}</td>
-                                <td class="text-center">{{$itemcurso->NIVEL->NIVEL}}</td>
-                                <td class="text-center">{{$itemcurso->GRADO->GRADO}}</td>
+                                <td class="text-center">{{$itemcatedra->IDCATEDRA}}</td>
+                                <td class="text-center">{{$itemcatedra->AÑOESCOLAR}}</td>
+                                <td class="text-center">{{$itemcatedra->docente->APENOM}}</td>
+                                <td class="text-center">{{$itemcatedra->cursos->CURSO}}</td>
+                                <td class="text-center">{{$itemcatedra->seccion->SECCION}}</td>
                             </tr>
                         @endforeach
+                        <div class="col-md-2">
+                            <a href="{{route('catedra.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Insertar   </a>
+                            {{-- <a href="{{route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
+                        </div>
                     @else
                         <tr>
-                            <td colspan="4">¡No hay registros!</td>
+                            <td colspan="5">¡No hay registros!</td>
                         </tr>
+                        
                     @endif
                 </tbody>
+                
             </table>
-            <div class="col-md-2">
-                <a href="{{route('curso.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Insertar   </a>
-                <a href="{{route('curso.confirmar',$itemcurso->IDCURSO)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
-            </div>
+            
             
             @if(session('datos'))
                 <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -83,7 +89,7 @@
                     </button>
                 </div>
             @endif
-            <div class="text-center">{{$cursos->links()}}</div>
+            {{-- <div class="text-center">{{$catedra->links()}}</div> --}}
             
         </div>
         

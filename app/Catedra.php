@@ -15,7 +15,7 @@ class Catedra extends Model
         return $this->hasOne('App\Docente','IDDOCENTE','IDDOCENTE');
     }
     
-    public function curso(){
+    public function cursos(){
         return $this->hasOne('App\Curso','IDCURSO','IDCURSO');
     }
 

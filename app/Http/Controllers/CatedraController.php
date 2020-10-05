@@ -12,11 +12,10 @@ use App\Catedra;
 
 class CatedraController extends Controller
 {
-    const PAGINACION = 4;
     public function index()
     {
         $seccion = Seccion::all();
-        $cursos = Curso::where('estado','=','1')->paginate($this::PAGINACION);
+        $cursos = Curso::all();
         $docente = Docente::all();
         $catedra = Catedra::all();
         $niveles = Nivel::all();
