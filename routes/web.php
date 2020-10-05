@@ -33,6 +33,10 @@ Auth::routes();
 route::get('grados-de-estudios/{id}','MantenedorController@buscar')->name('grados-de-estudios.buscar');
 Route::resource('grados-de-estudios','MantenedorController');
 Route::resource('bienvenido','HomeController');
+
+//profile
+
+route::post('profile/{id}/update','UserController@update')->name('profile.update');
 Route::resource('profile','UserController');
 
 //Curso
@@ -42,6 +46,7 @@ route::get('cancelar',function (){
 route::get('curso/{idCurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 route::post('curso/{idCurso}/update','CursoController@update')->name('curso.update');
 Route::resource('curso','CursoController');
+
 
 //Docente
 route::get('cancelar1',function (){

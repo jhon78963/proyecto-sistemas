@@ -38,9 +38,15 @@
                 <li><h3><i class="fa fa-briefcase user-profile-icon"></i> {{auth()->user()->career}}</h3></li>
 
                 <li class="m-top-xs"><h3></h3>
-                    <h3><i class="fa fa-facebook user-profile-icon"></i><a href="{{auth()->user()->facebook}}" target="_blank"> {{auth()->user()->name}} {{auth()->user()->last_name}}</a></h3>
+                    <h3><i class="fa fa-facebook user-profile-icon"></i><a href="{{auth()->user()->facebook}}" target="_blank"> Facebook</a></h3>
+                </li>
+
+                <li>
+                    <a href="{{route('profile.edit',auth()->user()->id)}}" class="btn btn-info btn-sm" style=" width: 500px; height:50px;"><i class="fa fa-edit" style=" line-height: 40px;"></i> Editar</a>
                 </li>
             </ul>
+            
         </div>
+        
     </div>  
 @endsection

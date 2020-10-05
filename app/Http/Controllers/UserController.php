@@ -47,7 +47,8 @@ class UserController extends Controller
         $secciones=Seccion::all();
         $niveles=Nivel::all();
         $grados=Grado::all();
-        return view('auth.profile',compact('secciones','niveles','grados'));
+        $user=User::all();
+        return view('auth.profile',compact('user','secciones','niveles','grados'));
     }
 
     public function create()
@@ -80,5 +81,20 @@ class UserController extends Controller
         $usuario->save();
         return view('bienvenido')->with('datos','Felicidades ...! Registro satisfactorio');
 
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $niveles = Nivel::all();
+        $grados = Grado::all();;
+        return view('auth.editprofile',compact('user','niveles','grados'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+        User::findOrFail($id)->update($request->all());
+        return redirect()->route('profile.index');
     }
 }
