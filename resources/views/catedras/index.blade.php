@@ -66,10 +66,7 @@
                                 <td class="text-center">{{$itemcatedra->seccion->SECCION}}</td>
                             </tr>
                         @endforeach
-                        <div class="col-md-2">
-                            <a href="{{route('catedra.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Insertar   </a>
-                            {{-- <a href="{{route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
-                        </div>
+                        
                     @else
                         <tr>
                             <td colspan="5">¡No hay registros!</td>
@@ -79,7 +76,10 @@
                 </tbody>
                 
             </table>
-            
+            <div class="col-md-2">
+                <a href="{{route('catedra.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Insertar   </a>
+                {{-- <a href="{{route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
+            </div>
             
             @if(session('datos'))
                 <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">

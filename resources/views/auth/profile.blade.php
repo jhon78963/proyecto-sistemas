@@ -30,15 +30,15 @@
                 <img class="img-responsive avatar-view" src="adminlte/images/picture.jpg" alt="Avatar" title="Change the avatar">
                 </div>
             </div>
-            <h1 class="col-lg-6 ">{{auth()->user()->name}}</h1>
+            <h1 class="col-lg-6 ">{{auth()->user()->name}} {{auth()->user()->last_name}}</h1>
 
             <ul class="list-unstyled user_data col-lg-6">
-                <li><h3><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA</h3></li>
+                <li><h3><i class="fa fa-map-marker user-profile-icon"></i> {{auth()->user()->address}}</h3></li>
 
-                <li><h3><i class="fa fa-briefcase user-profile-icon"></i> Software Engineer</h3></li>
+                <li><h3><i class="fa fa-briefcase user-profile-icon"></i> {{auth()->user()->career}}</h3></li>
 
                 <li class="m-top-xs"><h3></h3>
-                    <h3><i class="fa fa-facebook user-profile-icon"></i><a href="" target="_blank"> Jhon Livias</a></h3>
+                    <h3><i class="fa fa-facebook user-profile-icon"></i><a href="{{auth()->user()->facebook}}" target="_blank"> {{auth()->user()->name}} {{auth()->user()->last_name}}</a></h3>
                 </li>
             </ul>
         </div>

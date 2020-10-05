@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         // 'career','facebook'
-        'name', 'email', 'password'
+        'name', 'last_name', 'address', 'career', 'facebook', 'username', 'email', 'password'
     ];
 
     /**
