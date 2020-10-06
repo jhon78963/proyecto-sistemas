@@ -25,29 +25,34 @@
         <form method="POST" action="{{route('profile.update',$user->id)}}">
             @method('put')
             @csrf
-            {{-- <input type="hidden" name="_method" value="PATCH"> --}}
-
-            <div class="form-row">
-                <div class="col-lg mb-3">
+            <div class="row">
+                <div class="col-md-4">
                     <label class="" for="id">Código Usuario</label>
-                    <input class="form-control" type="text" name="id" value="{{$user->id}}" readonly>
+                    <input class="form-control" type="text" name="id" value="{{$user->id}}" readonly><br>
                 </div>
-                <div class="col-lg mb-3">
-                    <label class="" for="name">Nombre</label>
+                
+                <div class="col-md-4">
+                    <label class="" for="name">Nombre(s)</label>
                     <input class="form-control" type="text" name="name" value="{{$user->name}}">
                 </div>
-                <div class="col-lg mb-3">
-                    <label class="" for="last_name">DNI</label>
+                <div class="col-md-4">
+                    <label class="" for="last_name">Apellido(s)</label>
                     <input class="form-control" type="text" name="last_name" value="{{$user->last_name}}">
                 </div>
-                <div class="col-lg mb-3">
-                    <label class="" for="address">DNI</label>
+                
+                <div class="col-md-8">
+                    <label class="" for="address">Dirección</label>
                     <input class="form-control" type="text" name="address" value="{{$user->address}}">
                 </div>
+                <div class="col-md-4">
+                    <label class="" for="address">Facebook</label>
+                    <input class="form-control" type="text" name="address" value="{{$user->facebook}}">
+                </div>
             </div>
-            <div class="btn-group">
-                <input class="btn btn-success" type="submit" value="Grabar">
-                <a class="btn btn-primary" href="{{route('profile.index')}}">Volver</a>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Grabar</button>
+                <a class="btn btn-primary" href="{{route('profile.index')}}"><i class="fa fa-ban"></i> Cancelar</a>
             </div>
         </form>
     </div>

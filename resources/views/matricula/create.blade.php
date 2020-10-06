@@ -97,7 +97,7 @@
                     </div>
                 </div>
 
-                <div class="btn-group">
+                <div>
                     <input class="btn btn-success" type="submit" id="GRABR" value="SIGUIENTE">
                     <a class="btn btn-primary" href="{{route('matricula.index')}}">VER MATRICULAS</a>
                 </div>
@@ -107,22 +107,4 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/propio/matricula/create.js')}}"></script>
-    <script>
-        // var grabar = false;
-        // $(function() {
-        //     $(document).on('click', 'input[type="submit"]', function(event) {
-        //         grabar = true;
-        //         // console.log("Se presionó el Boton con Id :"+ id_init)
-        //     });
-        // });
-        // window.addEventListener("beforeunload", function (e) {
-        //     if(!grabar){
-        //         var confirmationMessage = "\o/";
-
-        //         (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-        //         return confirmationMessage;                            //Webkit, Safari, Chrome
-        //     }
-        //     grabar = false;
-        // });
-    </script>
 @endsection

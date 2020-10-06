@@ -252,7 +252,7 @@
                     </div>
                 </div>
 
-                <div class="btn-group">
+                <div>
                     <input class="btn btn-success" type="submit" value="REGISTRAR ALUMNO">
                     <a class="btn btn-primary" href="{{route('matricula.create')}}">VOLVER</a>
                 </div>
