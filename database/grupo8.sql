@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 03-10-2020 a las 00:47:35
+-- Tiempo de generación: 08-10-2020 a las 13:30:33
 -- Versión del servidor: 8.0.18
 -- Versión de PHP: 7.4.0
 
@@ -21,9 +21,11 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `grupo8`
 --
+
 DROP DATABASE IF EXISTS GRUPO8;
 CREATE DATABASE GRUPO8;
 USE GRUPO8;
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +92,34 @@ INSERT INTO `alumnos` (`IDALUMNO`, `MODULAR`, `DNI`, `APELLIDOPATERNO`, `APELLID
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `catedras`
+--
+
+DROP TABLE IF EXISTS `catedras`;
+CREATE TABLE IF NOT EXISTS `catedras` (
+  `IDCATEDRA` int(11) NOT NULL AUTO_INCREMENT,
+  `AÑOESCOLAR` varchar(4) NOT NULL,
+  `IDDOCENTE` int(11) DEFAULT NULL,
+  `IDCURSO` int(11) DEFAULT NULL,
+  `IDSECCION` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDCATEDRA`),
+  KEY `IDDOCENTE` (`IDDOCENTE`),
+  KEY `IDCURSO` (`IDCURSO`),
+  KEY `IDSECCION` (`IDSECCION`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `catedras`
+--
+
+INSERT INTO `catedras` (`IDCATEDRA`, `AÑOESCOLAR`, `IDDOCENTE`, `IDCURSO`, `IDSECCION`) VALUES
+(1, '2020', 1, 1, 1),
+(2, '2020', 2, NULL, NULL),
+(3, '2020', 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cursos`
 --
 
@@ -108,45 +138,16 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`IDCURSO`, `IDNIVEL`, `IDGRADO`, `CODIGO`, `CURSO`, `ESTADO`, `CREATED_AT`, `UPDATED_AT`) VALUES
-(1, 1, 1, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(2, 1, 1, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(3, 1, 2, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(4, 1, 2, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(5, 1, 3, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(6, 1, 3, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(7, 2, 4, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(8, 2, 4, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(9, 2, 5, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(10, 2, 5, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(11, 2, 6, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(12, 2, 6, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(13, 2, 7, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(14, 2, 7, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(15, 2, 8, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(16, 2, 8, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(17, 2, 9, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(18, 2, 9, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(19, 2, 7, 'MA', 'MATEMATICA', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(20, 3, 10, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(21, 3, 10, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(22, 3, 11, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(23, 3, 11, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(24, 3, 12, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(25, 3, 12, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(26, 3, 13, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(27, 3, 13, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(28, 3, 14, 'ZO', 'COMPUTACION', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(29, 3, 14, 'CO', 'COMUNICACION', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(30, 2, 9, 'zi', 'INGLES', '1', '2020-08-31 16:36:30', '2020-08-31 16:36:30'),
-(31, 2, 9, 'ZI', 'INGLES', '1', '2020-08-31 16:36:15', '2020-08-31 16:36:15'),
-(32, 1, 3, 'ZI', 'INGLES', '1', '2020-08-31 17:41:20', '2020-08-31 17:41:20');
+INSERT INTO `cursos` (`IDCURSO`, `IDNIVEL`, `IDGRADO`, `IDSECCION`, `CODIGO`, `CURSO`, `ESTADO`, `CREATED_AT`, `UPDATED_AT`) VALUES
+(1, 1, 1, 1, 'CO', 'Comumicacion', '1', '2020-10-08 00:16:09', '2020-10-08 00:16:09'),
+(2, 1, 1, 2, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:31', '2020-10-08 00:16:31'),
+(3, 1, 1, 3, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:44', '2020-10-08 00:16:44');
 
 -- --------------------------------------------------------
 
@@ -2113,26 +2114,20 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   `ESTADOCIVIL` varchar(20) DEFAULT NULL,
   `TELEFONO` int(11) DEFAULT NULL,
   `SEGUROSOCIAL` varchar(80) DEFAULT NULL,
-  `IDNIVEL` int(11) DEFAULT NULL,
-  `IDGRADO` int(11) DEFAULT NULL,
-  `IDSECCION` int(11) DEFAULT NULL,
   `FECINGRESO` date DEFAULT NULL,
   `ESTADO` char(1) DEFAULT NULL,
   `CREATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`IDDOCENTE`),
-  KEY `IDNIVEL` (`IDNIVEL`),
-  KEY `IDGRADO` (`IDGRADO`),
-  KEY `IDSECCION` (`IDSECCION`)
+  PRIMARY KEY (`IDDOCENTE`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `docentes`
 --
 
-INSERT INTO `docentes` (`IDDOCENTE`, `APENOM`, `DNI`, `DIRECCION`, `ESTADOCIVIL`, `TELEFONO`, `SEGUROSOCIAL`, `IDNIVEL`, `IDGRADO`, `IDSECCION`, `FECINGRESO`, `ESTADO`, `CREATED_AT`, `UPDATED_AT`) VALUES
-(1, 'Azañedo Games Wilson David', '11122233', 'Trujillo', 'SOLTERO', 44123456, 'SI', NULL, NULL, NULL, '2020-08-23', '1', '2020-08-31 22:01:11', '2020-08-31 22:56:11'),
-(2, 'lEON vICTOR', '4684', 'TRUJILLO', 'CASADO', 64684, 'NO', NULL, NULL, NULL, '2020-08-31', '1', '2020-08-31 22:42:42', '2020-08-31 22:42:49');
+INSERT INTO `docentes` (`IDDOCENTE`, `APENOM`, `DNI`, `DIRECCION`, `ESTADOCIVIL`, `TELEFONO`, `SEGUROSOCIAL`, `FECINGRESO`, `ESTADO`, `CREATED_AT`, `UPDATED_AT`) VALUES
+(1, 'Azañedo Games Wilson David', '11122233', 'Trujillo', 'SOLTERO', 44123456, 'SI', '2020-08-23', '1', '2020-08-31 22:01:11', '2020-08-31 22:56:11'),
+(2, 'Leon Paz Victor Enrique', '4684', 'TRUJILLO', 'CASADO', 64684, 'NO', '2020-08-31', '1', '2020-08-31 22:42:42', '2020-10-05 05:35:25');
 
 -- --------------------------------------------------------
 
@@ -2211,7 +2206,7 @@ CREATE TABLE IF NOT EXISTS `matriculas` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `matriculas`
@@ -2225,7 +2220,8 @@ INSERT INTO `matriculas` (`IDMATRICULA`, `IDALUMNO`, `FECMATRICULA`, `IDNIVEL`, 
 (5, '1', '2020-08-31 00:00:00', 2, 4, 11, 2020, '1', '2020-08-31 21:52:52', '2020-08-31 21:52:52'),
 (6, '1', '2020-08-31 00:00:00', 2, 5, 12, 2020, '1', '2020-08-31 22:44:12', '2020-08-31 22:44:12'),
 (7, '3', '2020-08-31 00:00:00', 3, 12, 26, 2020, '1', '2020-08-31 22:45:44', '2020-08-31 22:45:44'),
-(8, '1', '2020-10-03 00:00:00', 2, 6, 14, 2020, NULL, '2020-10-03 00:41:17', '2020-10-03 00:41:17');
+(8, '1', '2020-10-03 00:00:00', 2, 6, 14, 2020, NULL, '2020-10-03 00:41:17', '2020-10-03 00:41:17'),
+(9, '1', '2020-10-06 00:00:00', 2, 4, 10, 2020, '1', '2020-10-06 06:12:53', '2020-10-06 06:12:53');
 
 -- --------------------------------------------------------
 
@@ -2596,6 +2592,11 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `career` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2603,14 +2604,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'jhon', 'jhonlivias3@gmail.com', NULL, '$2y$10$2/GR4Yr.Fxlx2F5BR/GVdO/YXtIhboS4Gsb0p/nOhFTuhI4BWU6la', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `last_name`, `address`, `career`, `facebook`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Jhon Antony', 'Livias Cerquin', 'https://www.facebook.com/GSCK.zero', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon7896', 'jhonlivias3@gmail.com', NULL, '$2y$10$2/GR4Yr.Fxlx2F5BR/GVdO/YXtIhboS4Gsb0p/nOhFTuhI4BWU6la', NULL, NULL, NULL),
+(2, 'Víctor Enrique', 'León Paz', 'Huanchaco', 'Ingeniería de Sistemas', 'https://www.facebook.com/victor.leon.73157', 'victor123', 'victor@gmail.com', NULL, '$2y$10$NcooZXuZrBJIGZ.Vn0hnVOlZ6.2iNBstYDKWbw1V7NiptrHBOZJpe', NULL, NULL, NULL),
+(3, 'Jhon Antony', 'Livias Cerquin', 'https://www.facebook.com/GSCK.zero', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon789631', 'jhonlivias@gmail.com', NULL, '$2y$10$zRI5owgrUU.uDeQZ6UnH7eWfI/z9BsNOQv4TGjxQ5j8AcJa.3qeNm', NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
