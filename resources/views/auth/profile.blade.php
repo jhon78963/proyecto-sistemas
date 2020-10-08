@@ -24,15 +24,17 @@
 
     <div class="x_content">
         <div class="col-md-12 col-sm-12  profile_left">
-            <div class="profile_img col-lg-3">
+            <div class="profile_img col-md-3">
                 <div id="crop-avatar">
                 <!-- Current avatar -->
-                <img class="img-responsive avatar-view" src="adminlte/images/picture.jpg" alt="Avatar" title="Change the avatar">
+                <img class="img-responsive avatar-view" src="adminlte/images/picture.jpg"  alt="Avatar" title="Change the avatar">
                 </div>
             </div>
-            <h1 class="col-lg-6 ">{{auth()->user()->name}} {{auth()->user()->last_name}}</h1>
+            <div class="row">
+                
 
-            <ul class="list-unstyled user_data col-lg-6">
+                <ul class="list-unstyled user_data col-md-9">
+                <li><h1>{{auth()->user()->name}} {{auth()->user()->last_name}}</h1></li>
                 <li><h3><i class="fa fa-map-marker user-profile-icon"></i> {{auth()->user()->address}}</h3></li>
 
                 <li><h3><i class="fa fa-briefcase user-profile-icon"></i> {{auth()->user()->career}}</h3></li>
@@ -44,7 +46,9 @@
                 <li>
                     <a href="{{route('profile.edit',auth()->user()->id)}}" class="btn btn-info btn-sm" style=" width: 500px; height:50px;"><i class="fa fa-edit" style=" line-height: 40px;"></i> Editar</a>
                 </li>
-            </ul>
+                </ul>
+            </div>
+            
             
         </div>
         

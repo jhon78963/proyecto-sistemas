@@ -22,7 +22,7 @@
     </div>
     <!-- Contenido -->
     <div class="x_content">
-        <form method="POST" action="{{route('profile.update',$user->id)}}">
+        <form method="POST" action="{{route('profile.update',$user->id)}}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="row">

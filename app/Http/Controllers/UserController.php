@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\User;
 use App\Nivel;
 use App\Grado;
@@ -74,6 +76,7 @@ class UserController extends Controller
 
 
         ]);
+        
         $usuario=new User();
         $usuario->name=$request->name;
         $usuario->email=$request->email;
@@ -85,6 +88,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        
         $user = User::findOrFail($id);
         $niveles = Nivel::all();
         $grados = Grado::all();;
