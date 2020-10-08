@@ -9,6 +9,7 @@ use App\Nivel;
 use App\Curso;
 use App\Docente;
 use App\Catedra;
+use DB;
 
 class CatedraController extends Controller
 {
@@ -25,12 +26,37 @@ class CatedraController extends Controller
 
     public function create()
     {
-        //
+        return view('catedras.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $catedra=new Catedra();
+        $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
+        $catedra->IDDOCENTE=$request->IDDOCENTE;
+        // try{
+        //     DB::beginTransaction();
+        //     $curso=$request->IDCURSO;
+        //     if (is_array($curso) || is_object($curso)){
+        //         foreach ($curso as $cs)
+        //         {
+        //             $catedra=new Catedra();
+        //             $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
+        //             $catedra->IDDOCENTE=$request->IDDOCENTE;
+        //             $catedra->IDCURSO=$cs[0];
+        //             $catedra->IDSECCION=$cs[3];
+        //             $catedra->save();
+        //         }
+        //         DB::commit();
+        //     }
+            
+        // }
+        // catch(\Exception $e)
+        // {
+        //     dd($e);
+        //     DB::rollback();
+        // }
+        return redirect()->route('catedra.index');
     }
 
     public function show($id)

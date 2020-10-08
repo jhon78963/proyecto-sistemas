@@ -13,6 +13,10 @@ class Seccion extends Model
     public $timestamps=false;
 
     public function alumnos(){
-        return $this->hasMany(Alumno::class,'IDSECCION','IDSECCION');
+        return $this->hasMany('App\Alumno','IDSECCION','IDSECCION');
+    }
+
+    public function cursos(){
+        return $this->hasMany('App\Curso','IDSECCION','IDSECCION');
     }
 }

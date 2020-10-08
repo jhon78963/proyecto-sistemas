@@ -49,33 +49,28 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="">Nivel</label>
-                    <select class="form-control @error('IDNIVEL') is-invalid @enderror" name="IDNIVEL" id="NIVEL">
+                    <select class="form-control" name="IDNIVEL" id="NIVEL">
                         <option value="">Seleccione nivel</option>
                         @foreach ($niveles as $itemnivel)
                             <option value="{{$itemnivel->IDNIVEL}}" {{$itemnivel->IDNIVEL == old('IDNIVEL') ? 'selected' : ''}}>{{$itemnivel->NIVEL}}</option>
                         @endforeach
                     </select>
-                    @error('IDNIVEL')
-                        <span class="invalid-feedback" role="alert">
-                        <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="">Grado</label>
-                    <select class="form-control @error('IDGRADO') is-invalid @enderror" name="IDGRADO" id="GRADO">
+                    <select class="form-control" name="IDGRADO" id="GRADO">
                         <option value="">Seleccione Grado</option>
-                        @foreach ($grados as $itemgrado)
-                            <option value="{{$itemgrado->IDGRADO}} {{$itemnivel->IDNIVEL == old('IDGRADO') ? 'selected' : ''}}">{{$itemgrado->GRADO}}</option>
-                        @endforeach
                     </select>
-                    @error('IDGRADO')
-                        <span class="invalid-feedback" role="alert">
-                        <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="">Grado</label>
+                    <select class="form-control" name="IDSECCION" id="SECCION">
+                        <option value="">Seleccione Seccion</option>
+                    </select>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
@@ -85,24 +80,6 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/propio/curso/edit.js')}}"></script>
-    <script>
-        // var grabar = false;
-        // $(function() {
-        //     $(document).on('click', 'input[type="submit"]', function(event) {
-        //         grabar = true;
-        //         // console.log("Se presionó el Boton con Id :"+ id_init)
-        //     });
-        // });
-        // window.addEventListener("beforeunload", function (e) {
-        //     if(!grabar){
-        //         var confirmationMessage = "\o/";
-
-        //         (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-        //         return confirmationMessage;                            //Webkit, Safari, Chrome
-        //     }
-        //     grabar = false;
-        // });
-    </script>
 @endsection
 
 

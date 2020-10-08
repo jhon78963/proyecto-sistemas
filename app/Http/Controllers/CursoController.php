@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Curso;
 use App\Nivel;
 use App\Grado;
+use App\Seccion;
 
 class CursoController extends Controller
 {
@@ -47,6 +48,7 @@ class CursoController extends Controller
         $curso->CURSO=$request->CURSO;
         $curso->IDNIVEL=$request->IDNIVEL;
         $curso->IDGRADO=$request->IDGRADO;
+        $curso->IDSECCION=$request->IDSECCION;
         $curso->estado='1';
         $curso->save();
         return redirect()->route('curso.index')->with('datos','Registro Nuevo Guardado ...!');
@@ -62,7 +64,8 @@ class CursoController extends Controller
         $curso = Curso::findOrFail($id);
         $niveles = Nivel::all();
         $grados = Grado::where('IDNIVEL','=',$curso->IDNIVEL)->get();
-        return view('cursos.edit',compact('curso','niveles','grados'));
+        $secciones = Seccion::where('IDGRADO','=',$curso->IDSECCION)->get();
+        return view('cursos.edit',compact('curso','niveles','grados','secciones'));
     }
 
     public function update(Request $request, $id)
@@ -82,11 +85,6 @@ class CursoController extends Controller
             'IDGRADO.required'=>'Seleccione un grado para el curso',
         ]);
         Curso::findOrFail($id)->update($request->all());
-        // $curso->codigo=$request->codigo;
-        // $curso->curso=$request->curso;
-        // $curso->idNivel=$request->idNivel;
-        // $curso->idGrados=$request->idGrados;
-        // $curso->save();
         return redirect()->route('curso.index')->with('datos','Registro Actualizado ... !');
     }
 

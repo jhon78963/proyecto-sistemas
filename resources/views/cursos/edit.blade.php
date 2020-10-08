@@ -84,6 +84,23 @@
                     @enderror
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="">Seccion</label>
+                    <select class="form-control @error('IDSECCION') is-invalid @enderror" name="IDSECCION" id="SECCION">
+                        <option value="">Seleccione Seccion</option>
+                        @foreach ($secciones as $itemseccion)
+                            <option value="{{$itemseccion->IDSECCION}}" {{$itemseccion->IDSECCION == $curso->IDSECCION ? 'selected' : ''}}>{{$itemseccion->SECCION}}</option>
+                        @endforeach
+                    </select>
+                    @error('IDGRADO')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
             <a href="{{ route('cancelar')}}" class="btn btn-danger"><i class="fa fa-ban"></i> Cancelar</a>
         </form>

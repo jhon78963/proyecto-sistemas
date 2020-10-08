@@ -26,82 +26,94 @@
     <!-- Contenido -->
 
     <div class="x_content">
-        <div class="row">
-            <label for="" class="col-md-1" style="line-height:40px;" align="center">Docente</label>
+        <form method="POST" action="{{ route('catedra.store')}}"> 
+            @csrf
+            <div class="row">
+                <label for="" class="col-md-1" style="line-height:40px;" align="center">Docente</label>
 
-            <select class="form-control select2 select2-hidden-accessible selectpicker col-md-2" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true" name="IDDOCENTE" id="IDDOCENTE">
-                <option value="0">Seleccione docente</option>
-                @foreach ($docente as $itemdocente)
-                    <option value="{{$itemdocente->IDDOCENTE}}">{{$itemdocente->IDDOCENTE}}</option>
-                @endforeach
-            </select>
+                <select class="form-control select2 select2-hidden-accessible selectpicker col-md-2" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true" name="IDDOCENTE" id="IDDOCENTE">
+                    <option value="0">Seleccione docente</option>
+                    @foreach ($docente as $itemdocente)
+                        <option value="{{$itemdocente->IDDOCENTE}}">{{$itemdocente->IDDOCENTE}}</option>
+                    @endforeach
+                </select>
 
-            <div class="col-md-7">
-                <input type="text" class="form-control" id="APENOM" name="APENOM" disabled>
-            </div>
-            <label for="" class="col-md-1" style="line-height:40px;" align="center">Año escolar</label>
-            <input type="number" class="form-control col-md-1" id="AÑOESCOLAR" name="AÑOESCOLAR">
-        </div>
-        <div class="row">
-            <table class="table table-striped jambo_table bulk_action col-md-10">
-                <thead class="thead-dark">
-                <tr>
-                    <th class="text-center" scope="col">Código</th>
-                    <th class="text-center" scope="col">Año Escolar</th>
-                    <th class="text-center" scope="col">Docente</th>
-                    <th class="text-center" scope="col">Curso</th>
-                    <th class="text-center" scope="col">Seccion</th>
-
-    
-                </tr>
-                </thead>
-                <tbody>
-                    @if ($catedra->count())
-                        @foreach($catedra as $itemcatedra)
-                            <tr>
-                                <td class="text-center">{{$itemcatedra->IDCATEDRA}}</td>
-                                <td class="text-center">{{$itemcatedra->AÑOESCOLAR}}</td>
-                                <td class="text-center">{{$itemcatedra->docente->APENOM}}</td>
-                                <td class="text-center">{{$itemcatedra->cursos->CURSO}}</td>
-                                <td class="text-center">{{$itemcatedra->seccion->SECCION}}</td>
-                            </tr>
-                        @endforeach
-                        
-                    @else
-                        <tr>
-                            <td colspan="5">¡No hay registros!</td>
-                        </tr>
-                        
-                    @endif
-                </tbody>
-                
-            </table>
-            <div class="col-md-2">
-                <a href="{{route('catedra.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Insertar   </a>
-                {{-- <a href="{{route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
-            </div>
-            
-            @if(session('datos'))
-                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                    {{ session('datos') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="col-md-7">
+                    <input type="text" class="form-control" id="APENOM" name="APENOM" disabled>
                 </div>
-            @endif
-            {{-- <div class="text-center">{{$catedra->links()}}</div> --}}
+                <label for="" class="col-md-1" style="line-height:40px;" align="center">Año escolar</label>
+                <input type="number" class="form-control col-md-1" id="AÑOESCOLAR" name="AÑOESCOLAR">
+            </div>
+
+            <br>
+
+            <div class="row">
+                <table id="detalle" class="table table-striped jambo_table bulk_action col-md-10">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">Código</th>
+                            <th class="text-center" scope="col">Curso</th>
+                            <th class="text-center" scope="col">Grado</th>
+                            <th class="text-center" scope="col">Seccion</th>
+                            <th class="text-center" scope="col">Accion</th>
+
             
-        </div>
-        
+                        </tr>
+                    </thead>
+                </table>
+                <div class="col-md-2">
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addCatedra"><i class="fa fa-plus"></i> Agregar   </a>
+                    {{-- <a href="{{_{{route('catedra.create')}}_route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
+                </div>
+                
+                @if(session('datos'))
+                    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                        {{ session('datos') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                
+            </div>
+
+            <div class="modal fade" id="addCatedra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar curso</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <label for="">Curso</label>
+                            <select class="form-control select2 select2-hidden-accessible selectpicker" name="idcurso" id="idcurso" onchange="agregar();" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true">
+                                <option selected disabled hidden style='display: none' value='-1'>Seleccione curso</option>
+                                @foreach ($cursos as $itemcurso)
+                            <option value="{{$itemcurso->IDCURSO}}_{{$itemcurso->CODIGO}}_{{$itemcurso->CURSO}}_{{$itemcurso->grado->GRADO}}_{{$itemcurso->seccion->SECCION}}">{{$itemcurso->grado->GRADO}} - {{$itemcurso->CURSO}} - {{$itemcurso->seccion->SECCION}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p>Select "Volver" below if you are ready to exit.</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <input id="btnSubmit" type="submit" value="Grabar" class="btn btn-success" onclick="return confirm('Grabar ?')">
+        </form>
     </div>
     
 @endsection
 
 @section('scripts')
-    
     <script src="/calendario/js/bootstrap-datepicker.min.js"></script>
     <script src="/calendario/locales/bootstrap-datepicker.es.min.js"></script>
     <script src="/select2/bootstrap-select.min.js"></script>
     <script src="{{asset('js/propio/docente/create.js')}}"></script>
-
+    <script src="{{asset('js/propio/curso/agregar.js')}}"></script>
 @endsection
