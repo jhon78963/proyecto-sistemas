@@ -34,6 +34,8 @@ class CatedraController extends Controller
         $catedra=new Catedra();
         $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
         $catedra->IDDOCENTE=$request->IDDOCENTE;
+        $curso=$request->IDCURSO;
+        
         // try{
         //     DB::beginTransaction();
         //     $curso=$request->IDCURSO;
