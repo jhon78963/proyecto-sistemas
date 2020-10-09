@@ -31,33 +31,30 @@ class CatedraController extends Controller
 
     public function store(Request $request)
     {
-        $catedra=new Catedra();
-        $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
-        $catedra->IDDOCENTE=$request->IDDOCENTE;
-        $curso=$request->IDCURSO;
-        
-        // try{
-        //     DB::beginTransaction();
-        //     $curso=$request->IDCURSO;
-        //     if (is_array($curso) || is_object($curso)){
-        //         foreach ($curso as $cs)
-        //         {
-        //             $catedra=new Catedra();
-        //             $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
-        //             $catedra->IDDOCENTE=$request->IDDOCENTE;
-        //             $catedra->IDCURSO=$cs[0];
-        //             $catedra->IDSECCION=$cs[3];
-        //             $catedra->save();
-        //         }
-        //         DB::commit();
-        //     }
+        // Catedra::create($request->all());
+        try
+        {
+            DB::beginTransaction();
+            $cursos=$request->IDCURSO;
+            $secciones=$request->IDSECCION;
+            foreach ($cursos as $cur) 
+            {  
+                $catedra= new Catedra();
+                $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
+                $catedra->IDDOCENTE=$request->IDDOCENTE;
+                $catedra->IDCURSO=$cur[0];
+                $catedra->IDSECCION=$secciones[0];
+                $catedra->save();
+            }
+           
             
-        // }
-        // catch(\Exception $e)
-        // {
-        //     dd($e);
-        //     DB::rollback();
-        // }
+            DB::commit();
+        }
+        catch(\Exception $e)
+        {
+            dd($e);
+            DB::rollback();
+        }
         return redirect()->route('catedra.index');
     }
 

@@ -84,12 +84,12 @@
                     </li>
                     <li><a><i class="fa fa-usd"></i>Tesorería <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                        <li><a href="form.html">General Form</a></li>
-                        <li><a href="form_advanced.html">Advanced Components</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
-                        <li><a href="form_wizards.html">Form Wizard</a></li>
-                        <li><a href="form_upload.html">Form Upload</a></li>
-                        <li><a href="form_buttons.html">Form Buttons</a></li>
+                        <li><a href="#">Conceptos por Escala</a></li>
+                        <li><a href="#">Asignación de Escalas</a></li>
+                        <li><a href="#">Condonación de Deudas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Cobros de Pensiones/Varios</a></li>
+                        <li><a href="#">Recibos Emitidos</a></li>
                         </ul>
                     </li>
                     </ul>
