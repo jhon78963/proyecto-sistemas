@@ -36,18 +36,14 @@ class CatedraController extends Controller
         {
             DB::beginTransaction();
             $cursos=$request->IDCURSO;
-            $secciones=$request->IDSECCION;
             foreach ($cursos as $cur) 
-            {  
+            { 
                 $catedra= new Catedra();
                 $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
                 $catedra->IDDOCENTE=$request->IDDOCENTE;
                 $catedra->IDCURSO=$cur[0];
-                $catedra->IDSECCION=$secciones[0];
                 $catedra->save();
             }
-           
-            
             DB::commit();
         }
         catch(\Exception $e)
