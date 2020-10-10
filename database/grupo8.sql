@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 08-10-2020 a las 13:30:33
+-- Tiempo de generación: 10-10-2020 a las 17:01:13
 -- Versión del servidor: 8.0.18
 -- Versión de PHP: 7.4.0
 
@@ -101,21 +101,19 @@ CREATE TABLE IF NOT EXISTS `catedras` (
   `AÑOESCOLAR` varchar(4) NOT NULL,
   `IDDOCENTE` int(11) DEFAULT NULL,
   `IDCURSO` int(11) DEFAULT NULL,
-  `IDSECCION` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDCATEDRA`),
   KEY `IDDOCENTE` (`IDDOCENTE`),
-  KEY `IDCURSO` (`IDCURSO`),
-  KEY `IDSECCION` (`IDSECCION`)
+  KEY `IDCURSO` (`IDCURSO`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `catedras`
 --
 
-INSERT INTO `catedras` (`IDCATEDRA`, `AÑOESCOLAR`, `IDDOCENTE`, `IDCURSO`, `IDSECCION`) VALUES
-(1, '2020', 1, 1, 1),
-(2, '2020', 2, NULL, NULL),
-(3, '2020', 2, NULL, NULL);
+INSERT INTO `catedras` (`IDCATEDRA`, `AÑOESCOLAR`, `IDDOCENTE`, `IDCURSO`) VALUES
+(1, '2020', 1, 1),
+(2, '2020', 1, 4),
+(3, '2020', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -138,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
@@ -147,7 +145,9 @@ CREATE TABLE IF NOT EXISTS `cursos` (
 INSERT INTO `cursos` (`IDCURSO`, `IDNIVEL`, `IDGRADO`, `IDSECCION`, `CODIGO`, `CURSO`, `ESTADO`, `CREATED_AT`, `UPDATED_AT`) VALUES
 (1, 1, 1, 1, 'CO', 'Comumicacion', '1', '2020-10-08 00:16:09', '2020-10-08 00:16:09'),
 (2, 1, 1, 2, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:31', '2020-10-08 00:16:31'),
-(3, 1, 1, 3, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:44', '2020-10-08 00:16:44');
+(3, 1, 1, 3, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:44', '2020-10-08 00:16:44'),
+(4, 2, 4, 10, 'CO', 'Comunicacion', '1', '2020-10-09 00:11:50', '2020-10-09 00:11:50'),
+(5, 2, 5, 13, 'CO', 'Comunicacion', '1', '2020-10-09 00:12:15', '2020-10-09 00:12:15');
 
 -- --------------------------------------------------------
 
@@ -2604,16 +2604,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `address`, `career`, `facebook`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jhon Antony', 'Livias Cerquin', 'https://www.facebook.com/GSCK.zero', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon7896', 'jhonlivias3@gmail.com', NULL, '$2y$10$2/GR4Yr.Fxlx2F5BR/GVdO/YXtIhboS4Gsb0p/nOhFTuhI4BWU6la', NULL, NULL, NULL),
+(1, 'Jhon Antony', 'Livias Cerquin', 'Manuel Arevalo Mz. A26 Lt. 41 Etapa III', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon7896', 'jhonlivias3@gmail.com', NULL, '$2y$10$2/GR4Yr.Fxlx2F5BR/GVdO/YXtIhboS4Gsb0p/nOhFTuhI4BWU6la', NULL, NULL, NULL),
 (2, 'Víctor Enrique', 'León Paz', 'Huanchaco', 'Ingeniería de Sistemas', 'https://www.facebook.com/victor.leon.73157', 'victor123', 'victor@gmail.com', NULL, '$2y$10$NcooZXuZrBJIGZ.Vn0hnVOlZ6.2iNBstYDKWbw1V7NiptrHBOZJpe', NULL, NULL, NULL),
-(3, 'Jhon Antony', 'Livias Cerquin', 'https://www.facebook.com/GSCK.zero', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon789631', 'jhonlivias@gmail.com', NULL, '$2y$10$zRI5owgrUU.uDeQZ6UnH7eWfI/z9BsNOQv4TGjxQ5j8AcJa.3qeNm', NULL, NULL, NULL);
+(3, 'Jhon Antony', 'Livias Cerquin', 'Manuel Arevalo Mz. A26 Lt. 41 Etapa III', 'Ingeniería de Sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon789631', 'jhonlivias@gmail.com', NULL, '$2y$10$zRI5owgrUU.uDeQZ6UnH7eWfI/z9BsNOQv4TGjxQ5j8AcJa.3qeNm', NULL, NULL, NULL),
+(4, 'jhon', 'liivias', 'Manuel Arevalo Mz. A26 Lt. 41 Etapa III', 'ing de sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon741', 'jhon@gmail.com', NULL, '$2y$10$kvuipNet9N0SFKM10.9h6.8AtBF43vxPBtI4GhA7IhOZtFWbhtKHW', NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
