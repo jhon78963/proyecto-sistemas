@@ -47,15 +47,7 @@
 
             <br>
 
-            <div>
-                <label for="">Curso</label>
-                <select class="form-control select2 select2-hidden-accessible selectpicker" name="idcurso" id="idcurso" onchange="agregar();" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true">
-                    <option selected disabled hidden style='display: none' value='-1'>Seleccione curso</option>
-                    @foreach ($cursos as $itemcurso)
-                <option value="{{$itemcurso->IDCURSO}}_{{$itemcurso->CODIGO}}_{{$itemcurso->CURSO}}_{{$itemcurso->grado->GRADO}}_{{$itemcurso->seccion->IDSECCION}}_{{$itemcurso->seccion->SECCION}}">{{$itemcurso->grado->GRADO}} - {{$itemcurso->CURSO}} - {{$itemcurso->seccion->SECCION}}</option>
-                    @endforeach
-                </select>
-            </div>
+            
 
             <div class="row">
                 <table id="detalle" class="table table-striped jambo_table bulk_action col-md-10">
@@ -97,7 +89,7 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        {{-- <div>
+                        <div>
                             <label for="">Curso</label>
                             <select class="form-control select2 select2-hidden-accessible selectpicker" name="idcurso" id="idcurso" onchange="agregar();" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true">
                                 <option selected disabled hidden style='display: none' value='-1'>Seleccione curso</option>
@@ -105,7 +97,7 @@
                             <option value="{{$itemcurso->IDCURSO}}_{{$itemcurso->CODIGO}}_{{$itemcurso->CURSO}}_{{$itemcurso->grado->GRADO}}_{{$itemcurso->seccion->SECCION}}">{{$itemcurso->grado->GRADO}} - {{$itemcurso->CURSO}} - {{$itemcurso->seccion->SECCION}}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
                         <p>Select "Volver" below if you are ready to exit.</p>
                     </div>
                     <div class="modal-footer">
