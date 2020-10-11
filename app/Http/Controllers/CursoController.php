@@ -15,9 +15,8 @@ class CursoController extends Controller
     {
         $buscarpor = $request->buscarpor;
         $niveles=Nivel::all();
-        $grados=Grado::all();
         $cursos = Curso::where('estado','=','1')->where('curso','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('cursos.index',compact('cursos','niveles','grados','buscarpor'));
+        return view('cursos.index',compact('cursos','niveles','buscarpor'));
     }
 
     public function create()
@@ -90,9 +89,8 @@ class CursoController extends Controller
 
     public function confirmar($id){
         $niveles = Nivel::all();
-        $grados = Grado::all();
         $curso=Curso::findOrFail($id);
-        return view('cursos.confirmar',compact('curso','niveles','grados'));
+        return view('cursos.confirmar',compact('curso','niveles'));
     }
 
     public function destroy($id)

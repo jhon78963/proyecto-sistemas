@@ -52,7 +52,6 @@
                 <th class="text-center" scope="col">Curso</th>
                 <th class="text-center" scope="col">Nivel</th>
                 <th class="text-center" scope="col">Grado</th>
-                <th class="text-center" scope="col">Seccion</th>
                 <th class="text-center" scope="col">Opciones</th>
 
             </tr>
@@ -65,7 +64,6 @@
                             <td class="text-center">{{$itemcurso->CURSO}}</td>
                             <td class="text-center">{{$itemcurso->NIVEL->NIVEL}}</td>
                             <td class="text-center">{{$itemcurso->GRADO->GRADO}}</td>
-                                <td class="text-center">{{$itemcurso->SECCION->SECCION}}</td>
                             <td class="text-center">
                                 <a href="{{route('curso.edit',$itemcurso->IDCURSO)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Editar</a>
                                 <a href="{{route('curso.confirmar',$itemcurso->IDCURSO)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>

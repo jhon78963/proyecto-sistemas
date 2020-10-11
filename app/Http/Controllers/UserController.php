@@ -5,13 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Storage;
-
 use App\User;
 use App\Nivel;
-use App\Grado;
-use App\GradosP;
 use App\Seccion;
 
 class UserController extends Controller
@@ -48,9 +43,7 @@ class UserController extends Controller
     {
         $secciones=Seccion::all();
         $niveles=Nivel::all();
-        $grados=Grado::all();
-        $user=User::all();
-        return view('auth.profile',compact('user','secciones','niveles','grados'));
+        return view('auth.profile',compact('secciones','niveles'));
     }
 
     public function create()
@@ -64,7 +57,6 @@ class UserController extends Controller
             'name'=>'required|max:255',
             'email'=>'required|max:190',
             'password'=>'required|max:255'
-
         ],
         [
             'name.required'=>'Ingrese usuario',
@@ -73,10 +65,8 @@ class UserController extends Controller
             'email.max'=>'Maximo 255 caracteres para el email del usuario',
             'password.required'=>'Ingrese password',
             'password.max'=>'Maximo 255 caracteres para el password del usuario'
-
-
         ]);
-        
+
         $usuario=new User();
         $usuario->name=$request->name;
         $usuario->email=$request->email;
@@ -88,11 +78,10 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        
+
         $user = User::findOrFail($id);
         $niveles = Nivel::all();
-        $grados = Grado::all();;
-        return view('auth.editprofile',compact('user','niveles','grados'));
+        return view('auth.editprofile',compact('user','niveles'));
     }
 
     public function update(Request $request, $id)

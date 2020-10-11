@@ -32,7 +32,7 @@
                         <select class="form-control" name="IDALUMNO" id="ALUMNO" autocomplete="off">
                             <option value="{{$id_alumno}}">NUEVO ALUMNO</option>
                             @foreach ($alumnos as $alumno)
-                                <option value="{{$alumno->IDALUMNO}}">{{$alumno->IDALUMNO}}</option>
+                                <option value="{{$alumno->IDALUMNO}}">{{$alumno->NOMBRECOMPLETO}}</option>
                             @endforeach
                         </select>
                     </div>

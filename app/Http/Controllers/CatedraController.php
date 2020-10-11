@@ -3,28 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Seccion;
-use App\Grado;
 use App\Nivel;
-use App\Curso;
 use App\Docente;
 use App\Catedra;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CatedraController extends Controller
 {
 
     public function index()
     {
-        // join('docentes as d','d.IDDOCENTE','=','c.IDDOCENTE')->distinct('IDDOCENTE')->get();
-        $seccion = Seccion::all();
-        $cursos = Curso::all();
         $docente = Docente::all();
         $catedra = DB::table('catedras')->select('IDDOCENTE')->distinct()->get();
         $catedras= Catedra::all();
         $niveles = Nivel::all();
-        $grados = Grado::all();
-        return view('catedras.index',compact('catedra','seccion','docente','cursos','niveles','grados','catedras'));
+        return view('catedras.index',compact('catedra','docente','niveles'));
     }
 
     public function create()
@@ -38,8 +31,8 @@ class CatedraController extends Controller
         {
             DB::beginTransaction();
             $cursos=$request->IDCURSO;
-            foreach ($cursos as $cur) 
-            { 
+            foreach ($cursos as $cur)
+            {
                 $catedra= new Catedra();
                 $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
                 $catedra->IDDOCENTE=$request->IDDOCENTE;

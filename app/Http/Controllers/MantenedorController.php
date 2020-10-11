@@ -14,11 +14,10 @@ class MantenedorController extends Controller
     {
 
         $niveles=Nivel::all();
-        $grados=Grado::all();
         $cursos=Curso::all();
         $secciones=Seccion::all();
 
-        return view('grados.index',compact('niveles','grados','secciones','cursos'));
+        return view('grados.index',compact('niveles','secciones','cursos'));
     }
 
     const PAGINACION = 42;
@@ -26,11 +25,10 @@ class MantenedorController extends Controller
 
         $buscarpor = $request->buscarpor;
         $niveles=Nivel::all();
-        $grados=Grado::all();
         $grado=Grado::findOrFail($id);
         $cursos=Curso::all();
         $secciones=Seccion::where('seccion','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('grados.index',compact('niveles','grados','grado','secciones','cursos','buscarpor'));
+        return view('grados.index',compact('niveles','grado','secciones','cursos','buscarpor'));
     }
     public function create()
     {

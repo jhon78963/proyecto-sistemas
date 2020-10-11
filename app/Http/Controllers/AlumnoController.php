@@ -11,7 +11,7 @@ use App\Matricula;
 use App\Nivel;
 use App\Grado;
 use App\Pais;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller
 {
@@ -23,10 +23,11 @@ class AlumnoController extends Controller
     public function index()
     {
         //
-        $alumnos=Alumno::select(DB::raw("*,CONCAT(PRIMERNOMBRE,' ',OTROSNOMBRES,' ',APELLIDOPATERNO,' ',APELLIDOMATERNO) AS NOMBRECOMPLETO"))->where('estado','=','1')->get();
-        $niveles=Nivel::all();
-        $grados=Grado::all();
-        return view('alumno.index',compact('alumnos','niveles','grados'));
+        $alumnos=Alumno::select(DB::raw("*,CONCAT(PRIMERNOMBRE,' ',OTROSNOMBRES,' ',APELLIDOPATERNO,' ',APELLIDOMATERNO) AS NOMBRECOMPLETO"))
+            ->where('estado','=','1')
+            ->get();
+        $niveles = Nivel::all();
+        return view('alumno.index',compact('alumnos','niveles'));
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Alumno;
 
 class Matricula extends Model
 {
@@ -15,5 +14,15 @@ class Matricula extends Model
     public function alumno()
     {
         return $this->belongsTo('App\Alumno', 'IDALUMNO', 'IDALUMNO');
+    }
+
+    public function grado()
+    {
+        return $this->belongsTo('App\Grado', 'IDGRADO', 'IDGRADO');
+    }
+
+    public function nivel()
+    {
+        return $this->belongsTo('App\Nivel', 'IDNIVEL', 'IDNIVEL');
     }
 }
