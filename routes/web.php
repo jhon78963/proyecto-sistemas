@@ -29,14 +29,11 @@ Route::get('/register', function () {
 
 Auth::routes();
 
+Route::resource('bienvenido','HomeController');
+
 //grados
 route::get('grados-de-estudios/{id}','MantenedorController@buscar')->name('grados-de-estudios.buscar');
 Route::resource('grados-de-estudios','MantenedorController');
-Route::resource('bienvenido','HomeController');
-
-//profile
-
-route::post('profile/{id}/update','UserController@update')->name('profile.update');
 Route::resource('profile','UserController');
 
 //Curso
@@ -73,11 +70,11 @@ route::get('cancelar3',function (){
 })->name('cancelar3');
 route::get('matricula/{IDMATRICULA}/confirmar','MatriculaController@confirmar')->name('matricula.confirmar');
 route::post('matricula/{IDMATRICULA}/update','MatriculaController@update')->name('matricula.update');
-Route::resource('matricula','MatriculaController');
+Route::resource('matricula', 'MatriculaController');
 
 //Catedra
-Route::resource('catedra','CatedraController');
+Route::resource('catedra', 'CatedraController');
 
-
-
-
+// Concepto
+Route::resource('concepto', 'ConceptoController');
+Route::get('asignacion', 'ConceptoController@asignacion')->name('concepto.asignacion');

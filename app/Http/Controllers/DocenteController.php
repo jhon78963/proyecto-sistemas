@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Docente;
 use App\Nivel;
-use App\Grado;
 
 class DocenteController extends Controller
 {
@@ -14,16 +13,14 @@ class DocenteController extends Controller
     {
         $buscarpor = $request->buscarpor;
         $niveles=Nivel::all();
-        $grados=Grado::all();
         $docentes=Docente::where('estado','=','1')->where('APENOM','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('docentes.index',compact('docentes','niveles','grados','buscarpor'));
+        return view('docentes.index',compact('docentes','niveles','buscarpor'));
     }
 
     public function create()
     {
         $niveles = Nivel::all();
-        $grados = Grado::all();
-        return view('docentes.create',compact('niveles','grados'));
+        return view('docentes.create',compact('niveles'));
     }
 
     public function store(Request $request)
@@ -73,8 +70,7 @@ class DocenteController extends Controller
     {
         $docente=Docente::findOrFail($id);
         $niveles = Nivel::all();
-        $grados = Grado::all();
-        return view('docentes.edit',compact('docente','niveles','grados'));
+        return view('docentes.edit',compact('docente','niveles'));
     }
 
     public function update(Request $request, $id)
@@ -106,9 +102,8 @@ class DocenteController extends Controller
 
     public function confirmar($id){
         $niveles = Nivel::all();
-        $grado = Grado::all();
         $docente=Docente::findOrFail($id);
-        return view('docentes.confirmar',compact('docente','niveles','grado'));
+        return view('docentes.confirmar',compact('docente','niveles'));
     }
 
     public function destroy($id)

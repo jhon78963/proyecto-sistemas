@@ -10,7 +10,7 @@ use App\Seccion;
 use App\Alumno;
 use App\Pais;
 use App\Docente;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class MatriculaController extends Controller
 {
@@ -116,6 +116,25 @@ class MatriculaController extends Controller
     public function show($id)
     {
         //
+        return Matricula::find($id);
+    }
+
+    public function matriculasxperiodo($periodo)
+    {
+        return Matricula::join('alumnos','alumnos.IDALUMNO','=','matriculas.IDALUMNO')
+            ->select(DB::raw("alumnos.IDALUMNO, CONCAT(PRIMERNOMBRE,' ',OTROSNOMBRES,' ',APELLIDOPATERNO,' ',APELLIDOMATERNO) AS NOMBRECOMPLETO"))
+            ->where('matriculas.ESTADO','=','1')
+            ->where('matriculas.AÑOINGRESO','=',$periodo)
+            ->get();
+    }
+
+    public function alumnoxperiodo($periodo, $id)
+    {
+        return Matricula::join()
+            ->where('estado','=','1')
+            ->where('AÑOINGRESO','=',$periodo)
+            ->where('IDALUMNO','=',$id)
+            ->first();
     }
 
     /**

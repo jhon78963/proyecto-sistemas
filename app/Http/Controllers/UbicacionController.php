@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nivel;
-use App\Grado;
-use App\GradosP;
 use App\Departamento;
 use App\Provincia;
 use App\Distrito;
@@ -17,11 +15,10 @@ class UbicacionController extends Controller
     {
         $buscarpor = $request->buscarpor;
         $niveles=Nivel::all();
-        $grados=Grado::all();
         $departamentos=Departamento::all();
         $provincias=Provincia::all();
         $distrito=Distrito::where('distrito','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-        return view('ubicaciones.index',compact('distrito','niveles','grados','departamentos','distrito','buscarpor'));
+        return view('ubicaciones.index',compact('distrito','niveles','departamentos','distrito','buscarpor'));
 
     }
 
