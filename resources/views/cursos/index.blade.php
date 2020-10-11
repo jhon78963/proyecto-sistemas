@@ -61,11 +61,11 @@
                 @if ($cursos->count())
                     @foreach($cursos as $itemcurso)
                         <tr>
-                            <td class="text-center">{{$itemcurso->CODIGO}}</th>
-                            <td class="text-center">{{$itemcurso->CURSO}}</th>
-                            <td class="text-center">{{$itemcurso->NIVEL->NIVEL}}</th>
-                            <td class="text-center">{{$itemcurso->GRADO->GRADO}}</th>
-                                <td class="text-center">{{$itemcurso->SECCION->SECCION}}</th>
+                            <td class="text-center">{{$itemcurso->CODIGO}}</td>
+                            <td class="text-center">{{$itemcurso->CURSO}}</td>
+                            <td class="text-center">{{$itemcurso->NIVEL->NIVEL}}</td>
+                            <td class="text-center">{{$itemcurso->GRADO->GRADO}}</td>
+                                <td class="text-center">{{$itemcurso->SECCION->SECCION}}</td>
                             <td class="text-center">
                                 <a href="{{route('curso.edit',$itemcurso->IDCURSO)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Editar</a>
                                 <a href="{{route('curso.confirmar',$itemcurso->IDCURSO)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>

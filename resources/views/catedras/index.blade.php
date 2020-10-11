@@ -58,10 +58,22 @@
                             <th class="text-center" scope="col">Grado</th>
                             <th class="text-center" scope="col">Seccion</th>
                             <th class="text-center" scope="col">Accion</th>
-
-            
                         </tr>
                     </thead>
+                    <tbody>
+                       
+                        @foreach($catedras as $itemcatedra)
+                            @if ($itemcatedra->IDDOCENTE == 1)
+                            <tr>
+                                <td class="text-center">{{$itemcatedra->cursos->CODIGO}}</th>
+                                <td class="text-center">{{$itemcatedra->docente->APENOM}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->grado->GRADO}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->seccion->SECCION}}</th>
+                            </tr>
+                            @endif   
+                        @endforeach
+                         
+                    </tbody>
                 </table>
                 <div class="col-md-2">
                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addCatedra"><i class="fa fa-plus"></i> Agregar   </a>

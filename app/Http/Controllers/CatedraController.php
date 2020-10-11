@@ -13,15 +13,18 @@ use DB;
 
 class CatedraController extends Controller
 {
+
     public function index()
     {
+        // join('docentes as d','d.IDDOCENTE','=','c.IDDOCENTE')->distinct('IDDOCENTE')->get();
         $seccion = Seccion::all();
         $cursos = Curso::all();
         $docente = Docente::all();
-        $catedra = Catedra::all();
+        $catedra = DB::table('catedras')->select('IDDOCENTE')->distinct()->get();
+        $catedras= Catedra::all();
         $niveles = Nivel::all();
         $grados = Grado::all();
-        return view('catedras.index',compact('catedra','seccion','docente','cursos','niveles','grados'));
+        return view('catedras.index',compact('catedra','seccion','docente','cursos','niveles','grados','catedras'));
     }
 
     public function create()
@@ -31,7 +34,6 @@ class CatedraController extends Controller
 
     public function store(Request $request)
     {
-        // Catedra::create($request->all());
         try
         {
             DB::beginTransaction();
