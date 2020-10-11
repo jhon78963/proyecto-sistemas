@@ -20,11 +20,10 @@ class CatedraController extends Controller
         $seccion = Seccion::all();
         $cursos = Curso::all();
         $docente = Docente::all();
-        $catedra = DB::table('catedras')->select('IDDOCENTE')->distinct()->get();
         $catedras= Catedra::all();
         $niveles = Nivel::all();
         $grados = Grado::all();
-        return view('catedras.index',compact('catedra','seccion','docente','cursos','niveles','grados','catedras'));
+        return view('catedras.index',compact('seccion','docente','cursos','niveles','grados','catedras'));
     }
 
     public function create()

@@ -26,4 +26,3 @@ Route::get('/nivel/{id}/grados','GradoController@byNivel');
 Route::get('/grado/{id}/secciones','SeccionController@byGrado');
 Route::get('/alumno/{id}','AlumnoController@show');
 Route::get('/docente/{id}','DocenteController@show');
-Route::get('/catedra/{id}/cursos', 'CatedraController@byCursos');
