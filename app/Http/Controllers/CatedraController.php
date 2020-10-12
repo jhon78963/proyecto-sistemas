@@ -9,7 +9,7 @@ use App\Nivel;
 use App\Curso;
 use App\Docente;
 use App\Catedra;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class CatedraController extends Controller
 {
@@ -19,10 +19,10 @@ class CatedraController extends Controller
         $seccion = Seccion::all();
         $cursos = Curso::where('estado','=','1')->paginate($this::PAGINACION);
         $docente = Docente::all();
-        $catedras= Catedra::all();
+        $catedra= Catedra::all();
         $niveles = Nivel::all();
         $cursos = Curso::all();
-        return view('catedras.index',compact('catedra','catedras','cursos','docente','niveles'));
+        return view('catedras.index',compact('catedra','catedra','cursos','docente','niveles'));
     }
 
     public function create()
