@@ -74,7 +74,10 @@ Route::resource('matricula', 'MatriculaController');
 
 //Catedra
 Route::resource('catedra', 'CatedraController');
+Route::get('catedra/mostrar', 'CatedraController@mostrar')->name('catedra.mostrar');
+
 
 // Concepto
 Route::resource('concepto', 'ConceptoController');
 Route::get('asignacion', 'ConceptoController@asignacion')->name('concepto.asignacion');
+Route::get('condonacion', 'ConceptoController@condonacion')->name('concepto.condonacion');

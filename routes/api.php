@@ -29,4 +29,5 @@ Route::get('/matricula/{id}','MatriculaController@show');
 Route::get('/matricula/periodo/{periodo}','MatriculaController@matriculasxperiodo');
 Route::get('/matricula/{periodo}/{id}','MatriculaController@alumnoxperiodo');
 Route::get('/docente/{id}','DocenteController@show');
+Route::get('/cursosxdocente/{id}','DocenteController@cursosxdocente');
 Route::get('/catedra/{id}/cursos', 'CatedraController@byCursos');

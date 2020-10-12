@@ -2,7 +2,8 @@
 
 @section('buscador')
     <form class="form-inline my-2 my-lg-0">
-        <input name="buscarpor" class="form-control" type="search"  placeholder="Buscar por curso" value="{{$buscarpor}}">
+        <input name="escala" class="form-control" type="search"  placeholder="Buscar por escala" value="{{$escala}}">
+        <input name="descripcion" class="form-control" type="search"  placeholder="Buscar por descripcion" value="{{$descripcion}}">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Buscar</button>
         </span>

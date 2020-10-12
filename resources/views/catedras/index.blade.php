@@ -4,7 +4,7 @@
 @endsection
 @section('estilos')
     <link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
-    <link rel="stylesheet" href="/select2/bootstrap-select.min.css"> 
+    <link rel="stylesheet" href="/select2/bootstrap-select.min.css">
 @endsection
 @section('contenido')
     <div class="x_title">
@@ -26,7 +26,7 @@
     <!-- Contenido -->
 
     <div class="x_content">
-        <form method="POST" action="{{ route('catedra.store')}}"> 
+        <form method="POST" action="{{ route('catedra.store')}}">
             @csrf
             <div class="row">
                 <label for="" class="col-md-1" style="line-height:40px;" align="center">Docente</label>
@@ -47,28 +47,40 @@
 
             <br>
 
-            
+
 
             <div class="row">
                 <table id="detalle" class="table table-striped jambo_table bulk_action col-md-10">
                     <thead class="thead-dark">
                         <tr>
                             <th class="text-center" scope="col">Código</th>
+                            <th class="text-center" scope="col">Docente</th>
                             <th class="text-center" scope="col">Curso</th>
                             <th class="text-center" scope="col">Grado</th>
                             <th class="text-center" scope="col">Seccion</th>
-                            <th class="text-center" scope="col">Accion</th>
                         </tr>
                     </thead>
-                    <tbody>
-                         
+                    <tbody id="detallecatedras">
+
+                        @foreach($catedras as $itemcatedra)
+                            @if ($itemcatedra->IDDOCENTE == 1)
+                            <tr>
+                                <td class="text-center">{{$itemcatedra->cursos->CODIGO}}</th>
+                                <td class="text-center">{{$itemcatedra->docente->APENOM}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->CURSO}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->grado->GRADO}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->seccion->SECCION}}</th>
+                            </tr>
+                            @endif
+                        @endforeach
+
                     </tbody>
                 </table>
                 <div class="col-md-2">
                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addCatedra"><i class="fa fa-plus"></i> Agregar</a>
                     <a href="{{ route('catedra.create')}}" class="btn btn-info"><i class="fa fa-search"></i> Mostrar</a>
                 </div>
-                
+
                 @if(session('datos'))
                     <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
                         {{ session('datos') }}
@@ -77,7 +89,7 @@
                         </button>
                     </div>
                 @endif
-                
+
             </div>
 
             <div class="modal fade" id="addCatedra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,7 +111,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <p>Select "Volver" below if you are ready to exit.</p>
                         </div>
                         <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
@@ -110,7 +121,7 @@
             <input id="btnSubmit" type="submit" value="Grabar" class="btn btn-success" onclick="return confirm('Grabar ?')">
         </form>
     </div>
-    
+
 @endsection
 
 @section('scripts')
@@ -120,3 +131,4 @@
     <script src="{{asset('js/propio/docente/create.js')}}"></script>
     <script src="{{asset('js/propio/curso/agregar.js')}}"></script>
 @endsection
+

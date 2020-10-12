@@ -4,7 +4,7 @@
 @endsection
 @section('estilos')
     <link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
-    <link rel="stylesheet" href="/select2/bootstrap-select.min.css"> 
+    <link rel="stylesheet" href="/select2/bootstrap-select.min.css">
 @endsection
 @section('contenido')
     <div class="x_title">
@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-               
+
                 <tr>
                     @foreach($catedras as $itemcatedra)
                     <tr>
@@ -49,9 +49,9 @@
                     </tr>
                     @endforeach
                 </tr>
-                 
+
             </tbody>
         </table>
     </div>
-    
+
 @endsection

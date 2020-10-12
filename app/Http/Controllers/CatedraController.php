@@ -22,7 +22,7 @@ class CatedraController extends Controller
         $catedras= Catedra::all();
         $niveles = Nivel::all();
         $cursos = Curso::all();
-        return view('catedras.index',compact('catedra','catedras','cursos','docente','niveles'));
+        return view('catedras.index',compact('catedras','cursos','docente','niveles'));
     }
 
     public function create()
@@ -62,7 +62,7 @@ class CatedraController extends Controller
     }
 
     public function mostrar(){
-        
+
     }
 
 

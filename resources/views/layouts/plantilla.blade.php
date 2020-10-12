@@ -81,15 +81,6 @@
                                     <li><a href="{{route('matricula.create')}}">Matricula</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-usd"></i>Tesorería <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                    <li><a href="{{route('concepto.index')}}">Conceptos</a></li>
-                                    <li><a href="{{route('concepto.asignacion')}}">Conceptos por Escala</a></li>
-                                    <li><a href="#">Asginacion Escala</a></li>
-                                    <li><a href="#">Condonacion Deuda</a></li>
-                                    <li><a href="#">Devoluciones</a></li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
 

@@ -29,12 +29,11 @@
                         <option value="">Seleccione alumno</option>
                     </select>
                 </div>
-
             </form>
         </div>
     </div>
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/propio/concepto/asignacion.js')}}"></script>
+<script src="{{asset('js/propio/concepto/condonacion.js')}}"></script>
 @endsection

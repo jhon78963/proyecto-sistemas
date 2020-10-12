@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Docente;
 use App\Nivel;
+use App\Catedra;
+use Illuminate\Support\Facades\DB;
 
 class DocenteController extends Controller
 {
@@ -64,6 +66,17 @@ class DocenteController extends Controller
     public function show($id)
     {
         return Docente::find($id);
+    }
+
+    public function cursosxdocente($id)
+    {
+        return Catedra::select(DB::raw('docentes.APENOM, catedras.IDCURSO, cursos.CURSO, grados.GRADO, secciones.SECCION'))
+            ->join('docentes','docentes.IDDOCENTE','=','catedras.IDDOCENTE')
+            ->join('cursos','cursos.IDCURSO','=','catedras.IDCURSO')
+            ->join('grados','grados.IDGRADO','=','cursos.IDGRADO')
+            ->join('secciones','secciones.IDSECCION','=','cursos.IDSECCION')
+            ->where('catedras.IDDOCENTE','=',$id)
+            ->get();
     }
 
     public function edit($id)
