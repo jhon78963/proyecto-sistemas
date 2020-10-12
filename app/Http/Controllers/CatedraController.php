@@ -9,7 +9,7 @@ use App\Nivel;
 use App\Curso;
 use App\Docente;
 use App\Catedra;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CatedraController extends Controller
 {
@@ -21,8 +21,8 @@ class CatedraController extends Controller
         $docente = Docente::all();
         $catedras= Catedra::all();
         $niveles = Nivel::all();
-        $grados = Grado::all();
-        return view('catedras.index',compact('seccion','docente','cursos','niveles','grados','catedras'));
+        $cursos = Curso::all();
+        return view('catedras.index',compact('catedra','catedras','cursos','docente','niveles'));
     }
 
     public function create()
