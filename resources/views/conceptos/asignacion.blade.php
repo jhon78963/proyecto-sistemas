@@ -1,12 +1,12 @@
 @extends('layouts.plantilla')
 
 @section('titulo')
-    <h3>Conceptos </h3>
+    <h3>Conceptos</h3>
 @endsection
 
 @section('contenido')
 <div class="x_title">
-    <h2>Mantenimiento de<b> Conceptos</b></h2>
+    <h2>Asignacion de <b>Escala</b></h2>
     <div class="clearfix"></div>
   </div>
 
@@ -29,6 +29,8 @@
                         <option value="">Seleccione alumno</option>
                     </select>
                 </div>
+                <label for="">Año</label>
+                <input type="text" name="" id="AÑO">
             </form>
         </div>
     </div>

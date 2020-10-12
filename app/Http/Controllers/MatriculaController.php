@@ -130,10 +130,12 @@ class MatriculaController extends Controller
 
     public function alumnoxperiodo($periodo, $id)
     {
-        return Matricula::join()
-            ->where('estado','=','1')
-            ->where('AÑOINGRESO','=',$periodo)
-            ->where('IDALUMNO','=',$id)
+        return Matricula::join('niveles','niveles.IDNIVEL','=','matriculas.IDNIVEL')
+            ->join('grados','grados.IDGRADO','=','matriculas.IDGRADO')
+            ->select(DB::raw("CONCAT(grados.GRADO,' ',niveles.NIVEL) AS AÑO'"))
+            ->where('matriculas.estado','=','1')
+            ->where('matriculas.AÑOINGRESO','=',$periodo)
+            ->where('matriculas.IDALUMNO','=',$id)
             ->first();
     }
 

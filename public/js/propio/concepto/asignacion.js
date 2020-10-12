@@ -1,6 +1,6 @@
 $(function(){
-    $('#ALUMNO').on('change', alumnoCambio);
     $('#PERIODO').on('change', periodoCambio);
+    $('#ALUMNO').on('change', alumnoCambio);
 });
 
 var periodo = 0;
@@ -14,13 +14,15 @@ function periodoCambio(){
             alumnos += '<option value="'+data[i].IDALUMNO+'">'+data[i].NOMBRECOMPLETO+'</option>';
         }
         $('#ALUMNO').html(alumnos);
-        $('#ALUMNO').val(primero);
+        // $('#ALUMNO').val(primero);
     });
 }
 
 function alumnoCambio(){
     var alumno_id = $(this).val();
     $.get('/api/matricula/'+periodo+'/'+alumno_id, function(data){
-        $('#EDUCANDO').val(data.NUMERO);
+        alert(alumno_id);
+        alert(data);
+        $('#AÑO').val(data.AÑO);
     });
 }

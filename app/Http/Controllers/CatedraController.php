@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Nivel;
 use App\Docente;
 use App\Catedra;
+use App\Curso;
 use Illuminate\Support\Facades\DB;
 
 class CatedraController extends Controller
@@ -17,7 +18,8 @@ class CatedraController extends Controller
         $catedra = DB::table('catedras')->select('IDDOCENTE')->distinct()->get();
         $catedras= Catedra::all();
         $niveles = Nivel::all();
-        return view('catedras.index',compact('catedra','docente','niveles'));
+        $cursos = Curso::all();
+        return view('catedras.index',compact('catedra','catedras','cursos','docente','niveles'));
     }
 
     public function create()
