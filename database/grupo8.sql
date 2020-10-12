@@ -1,32 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 4.9.2
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 12-10-2020 a las 12:41:06
--- Versión del servidor: 8.0.18
--- Versión de PHP: 7.4.0
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `grupo8`
 --
 
-DROP DATABASE IF EXISTS GRUPO8;
+DROP DATABASE IF EXISTS GRUPO;
 CREATE DATABASE GRUPO8;
 USE GRUPO8;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `alumnos`
@@ -78,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   KEY `IDDEPARTAMENTO` (`IDDEPARTAMENTO`),
   KEY `IDPROVINCIA` (`IDPROVINCIA`),
   KEY `IDDISTRITO` (`IDDISTRITO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `alumnos`
@@ -104,7 +82,15 @@ CREATE TABLE IF NOT EXISTS `catedras` (
   PRIMARY KEY (`IDCATEDRA`),
   KEY `IDDOCENTE` (`IDDOCENTE`),
   KEY `IDCURSO` (`IDCURSO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
+
+--
+-- Volcado de datos para la tabla `catedras`
+--
+
+INSERT INTO `catedras` (`IDCATEDRA`, `AÑOESCOLAR`, `IDDOCENTE`, `IDCURSO`) VALUES
+(1, '2020', 1, 6),
+(2, '2020', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -122,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `conceptos` (
   `periodo` char(4) NOT NULL,
   `estado` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `conceptos`
@@ -202,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `cursos`
@@ -214,8 +200,8 @@ INSERT INTO `cursos` (`IDCURSO`, `IDNIVEL`, `IDGRADO`, `IDSECCION`, `CODIGO`, `C
 (3, 1, 1, 3, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:44', '2020-10-08 00:16:44'),
 (4, 2, 4, 10, 'CO', 'Comunicacion', '1', '2020-10-09 00:11:50', '2020-10-09 00:11:50'),
 (5, 2, 5, 13, 'CO', 'Comunicacion', '1', '2020-10-09 00:12:15', '2020-10-09 00:12:15'),
-(6, 1, 1, 1, 'IN', 'Ingles', '1', '2020-10-12 07:39:23', '2020-10-12 07:39:23'),
-(7, 1, 2, 4, 'IN', 'Ingles', '1', '2020-10-12 07:39:43', '2020-10-12 07:39:43');
+(6, 1, 1, 1, 'IN', 'Ingles', '0', '2020-10-12 07:39:23', '2020-10-12 07:39:23'),
+(7, 1, 2, 4, 'IN', 'Ingles', '0', '2020-10-12 07:39:43', '2020-10-12 07:39:43');
 
 -- --------------------------------------------------------
 
@@ -232,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `departamentos` (
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDDEPARTAMENTO`),
   KEY `IDPAIS` (`IDPAIS`)
-) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `departamentos`
@@ -284,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `distritos` (
   KEY `IDPAIS` (`IDPAIS`),
   KEY `IDDEPARTAMENTO` (`IDDEPARTAMENTO`),
   KEY `IDPROVINCIA` (`IDPROVINCIA`)
-) ENGINE=MyISAM AUTO_INCREMENT=1250402 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `distritos`
@@ -2187,7 +2173,7 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   `CREATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDDOCENTE`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `docentes`
@@ -2212,7 +2198,7 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -2229,7 +2215,7 @@ CREATE TABLE IF NOT EXISTS `grados` (
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDGRADO`),
   KEY `IDNIVEL` (`IDNIVEL`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `grados`
@@ -2274,7 +2260,7 @@ CREATE TABLE IF NOT EXISTS `matriculas` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `matriculas`
@@ -2303,7 +2289,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 --
 -- Volcado de datos para la tabla `migrations`
@@ -2327,7 +2313,7 @@ CREATE TABLE IF NOT EXISTS `niveles` (
   `CREATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDNIVEL`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `niveles`
@@ -2351,7 +2337,7 @@ CREATE TABLE IF NOT EXISTS `paises` (
   `CREATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   `UPDATED_AT` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IDPAIS`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `paises`
@@ -2371,7 +2357,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -2390,7 +2376,7 @@ CREATE TABLE IF NOT EXISTS `provincias` (
   PRIMARY KEY (`IDPROVINCIA`),
   KEY `IDPAIS` (`IDPAIS`),
   KEY `IDDEPARTAMENTO` (`IDDEPARTAMENTO`)
-) ENGINE=MyISAM AUTO_INCREMENT=12505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `provincias`
@@ -2611,7 +2597,7 @@ CREATE TABLE IF NOT EXISTS `secciones` (
   PRIMARY KEY (`IDSECCION`),
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Volcado de datos para la tabla `secciones`
@@ -2672,7 +2658,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
 --
 -- Volcado de datos para la tabla `users`
@@ -2685,6 +2671,3 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `address`, `career`, `facebook`,
 (4, 'jhon', 'liivias', 'Manuel Arevalo Mz. A26 Lt. 41 Etapa III', 'ing de sistemas', 'https://www.facebook.com/GSCK.zero', 'jhon741', 'jhon@gmail.com', NULL, '$2y$10$kvuipNet9N0SFKM10.9h6.8AtBF43vxPBtI4GhA7IhOZtFWbhtKHW', NULL, NULL, NULL);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
