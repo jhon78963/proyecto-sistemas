@@ -19,10 +19,10 @@ class CatedraController extends Controller
         $seccion = Seccion::all();
         $cursos = Curso::where('estado','=','1')->paginate($this::PAGINACION);
         $docente = Docente::all();
-        $catedra= Catedra::all();
+        $catedras= Catedra::all();
         $niveles = Nivel::all();
-        $cursos = Curso::all();
-        return view('catedras.index',compact('catedra','catedra','cursos','docente','niveles'));
+        $grados = Grado::all();
+        return view('catedras.index',compact('seccion','docente','cursos','niveles','grados','catedras'));
     }
 
     public function create()
