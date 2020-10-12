@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 10-10-2020 a las 17:01:13
+-- Tiempo de generación: 12-10-2020 a las 12:41:06
 -- Versión del servidor: 8.0.18
 -- Versión de PHP: 7.4.0
 
@@ -104,16 +104,82 @@ CREATE TABLE IF NOT EXISTS `catedras` (
   PRIMARY KEY (`IDCATEDRA`),
   KEY `IDDOCENTE` (`IDDOCENTE`),
   KEY `IDCURSO` (`IDCURSO`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `catedras`
+-- Estructura de tabla para la tabla `conceptos`
 --
 
-INSERT INTO `catedras` (`IDCATEDRA`, `AÑOESCOLAR`, `IDDOCENTE`, `IDCURSO`) VALUES
-(1, '2020', 1, 1),
-(2, '2020', 1, 4),
-(3, '2020', 1, 5);
+DROP TABLE IF EXISTS `conceptos`;
+CREATE TABLE IF NOT EXISTS `conceptos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(100) NOT NULL,
+  `escala` char(1) NOT NULL,
+  `monto` float NOT NULL,
+  `mora` tinyint(1) NOT NULL,
+  `periodo` char(4) NOT NULL,
+  `estado` char(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `conceptos`
+--
+
+INSERT INTO `conceptos` (`id`, `descripcion`, `escala`, `monto`, `mora`, `periodo`, `estado`) VALUES
+(1, 'RATIFICACION DE MATRICULA', 'N', 10, 0, '2016', '1'),
+(2, 'PENSION MARZO', 'A', 145, 1, '2016', '1'),
+(3, 'PENSION MARZO', 'B', 115, 1, '2016', '1'),
+(4, 'PENSION MARZO', 'C', 185, 1, '2016', '1'),
+(5, 'PENSION MARZO', 'D', 55, 1, '2016', '1'),
+(6, 'PENSION MARZO', 'E', 20, 1, '2016', '1'),
+(7, 'PENSION ABRIL', 'A', 145, 1, '2016', '1'),
+(8, 'PENSION ABRIL', 'B', 115, 1, '2016', '1'),
+(9, 'PENSION ABRIL', 'C', 185, 1, '2016', '1'),
+(10, 'PENSION ABRIL', 'D', 55, 1, '2016', '1'),
+(11, 'PENSION ABRIL', 'E', 20, 1, '2016', '1'),
+(12, 'PENSION MAYO', 'A', 145, 1, '2016', '1'),
+(13, 'PENSION MAYO', 'B', 115, 1, '2016', '1'),
+(14, 'PENSION MAYO', 'C', 185, 1, '2016', '1'),
+(15, 'PENSION MAYO', 'D', 55, 1, '2016', '1'),
+(16, 'PENSION MAYO', 'E', 20, 1, '2016', '1'),
+(17, 'PENSION JUNIO', 'A', 145, 1, '2016', '1'),
+(18, 'PENSION JUNIO', 'B', 115, 1, '2016', '1'),
+(19, 'PENSION JUNIO', 'C', 185, 1, '2016', '1'),
+(20, 'PENSION JUNIO', 'D', 55, 1, '2016', '1'),
+(21, 'PENSION JUNIO', 'E', 20, 1, '2016', '1'),
+(22, 'PENSION JULIO', 'A', 145, 1, '2016', '1'),
+(23, 'PENSION JULIO', 'B', 115, 1, '2016', '1'),
+(24, 'PENSION JULIO', 'C', 185, 1, '2016', '1'),
+(25, 'PENSION JULIO', 'D', 55, 1, '2016', '1'),
+(26, 'PENSION JULIO', 'E', 20, 1, '2016', '1'),
+(27, 'PENSION AGOSTO', 'A', 145, 1, '2016', '1'),
+(28, 'PENSION AGOSTO', 'B', 115, 1, '2016', '1'),
+(29, 'PENSION AGOSTO', 'C', 185, 1, '2016', '1'),
+(30, 'PENSION AGOSTO', 'D', 55, 1, '2016', '1'),
+(31, 'PENSION AGOSTO', 'E', 20, 1, '2016', '1'),
+(32, 'PENSION SEPTIEMBRE', 'A', 145, 1, '2016', '1'),
+(33, 'PENSION SEPTIEMBRE', 'B', 115, 1, '2016', '1'),
+(34, 'PENSION SEPTIEMBRE', 'C', 185, 1, '2016', '1'),
+(35, 'PENSION SEPTIEMBRE', 'D', 55, 1, '2016', '1'),
+(36, 'PENSION SEPTIEMBRE', 'E', 20, 1, '2016', '1'),
+(37, 'PENSION OCTUBRE', 'A', 145, 1, '2016', '1'),
+(38, 'PENSION OCTUBRE', 'B', 115, 1, '2016', '1'),
+(39, 'PENSION OCTUBRE', 'C', 185, 1, '2016', '1'),
+(40, 'PENSION OCTUBRE', 'D', 55, 1, '2016', '1'),
+(41, 'PENSION OCTUBRE', 'E', 20, 1, '2016', '1'),
+(42, 'PENSION NOVIEMBRE', 'A', 145, 1, '2016', '1'),
+(43, 'PENSION NOVIEMBRE', 'B', 115, 1, '2016', '1'),
+(44, 'PENSION NOVIEMBRE', 'C', 185, 1, '2016', '1'),
+(45, 'PENSION NOVIEMBRE', 'D', 55, 1, '2016', '1'),
+(46, 'PENSION NOVIEMBRE', 'E', 20, 1, '2016', '1'),
+(47, 'PENSION DICIEMBRE', 'A', 145, 1, '2016', '1'),
+(48, 'PENSION DICIEMBRE', 'B', 115, 1, '2016', '1'),
+(49, 'PENSION DICIEMBRE', 'C', 185, 1, '2016', '1'),
+(50, 'PENSION DICIEMBRE', 'D', 55, 1, '2016', '1'),
+(51, 'PENSION DICIEMBRE', 'E', 20, 1, '2016', '1');
 
 -- --------------------------------------------------------
 
@@ -136,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   KEY `IDNIVEL` (`IDNIVEL`),
   KEY `IDGRADO` (`IDGRADO`),
   KEY `IDSECCION` (`IDSECCION`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
@@ -147,7 +213,9 @@ INSERT INTO `cursos` (`IDCURSO`, `IDNIVEL`, `IDGRADO`, `IDSECCION`, `CODIGO`, `C
 (2, 1, 1, 2, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:31', '2020-10-08 00:16:31'),
 (3, 1, 1, 3, 'CO', 'Comunicacion', '1', '2020-10-08 00:16:44', '2020-10-08 00:16:44'),
 (4, 2, 4, 10, 'CO', 'Comunicacion', '1', '2020-10-09 00:11:50', '2020-10-09 00:11:50'),
-(5, 2, 5, 13, 'CO', 'Comunicacion', '1', '2020-10-09 00:12:15', '2020-10-09 00:12:15');
+(5, 2, 5, 13, 'CO', 'Comunicacion', '1', '2020-10-09 00:12:15', '2020-10-09 00:12:15'),
+(6, 1, 1, 1, 'IN', 'Ingles', '1', '2020-10-12 07:39:23', '2020-10-12 07:39:23'),
+(7, 1, 2, 4, 'IN', 'Ingles', '1', '2020-10-12 07:39:43', '2020-10-12 07:39:43');
 
 -- --------------------------------------------------------
 

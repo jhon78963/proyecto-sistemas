@@ -3,26 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Seccion;
+use App\Grado;
 use App\Nivel;
+use App\Curso;
 use App\Docente;
 use App\Catedra;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class CatedraController extends Controller
 {
-
+    const PAGINACION = 100;
     public function index()
     {
+        $seccion = Seccion::all();
+        $cursos = Curso::where('estado','=','1')->paginate($this::PAGINACION);
         $docente = Docente::all();
-        $catedra = DB::table('catedras')->select('IDDOCENTE')->distinct()->get();
         $catedras= Catedra::all();
         $niveles = Nivel::all();
-        return view('catedras.index',compact('catedra','docente','niveles'));
+        $grados = Grado::all();
+        return view('catedras.index',compact('seccion','docente','cursos','niveles','grados','catedras'));
     }
 
     public function create()
     {
-        return view('catedras.create');
+        $seccion = Seccion::all();
+        $catedras= Catedra::all();
+        $niveles = Nivel::all();
+        $grados = Grado::all();
+        return view('catedras.show',compact('seccion','niveles','grados','catedras'));
     }
 
     public function store(Request $request)
@@ -38,6 +47,9 @@ class CatedraController extends Controller
                 $catedra->IDDOCENTE=$request->IDDOCENTE;
                 $catedra->IDCURSO=$cur[0];
                 $catedra->save();
+                $curso=Curso::findOrFail($cur[0]);
+                $curso->estado='0';
+                $curso->save();
             }
             DB::commit();
         }
@@ -49,9 +61,14 @@ class CatedraController extends Controller
         return redirect()->route('catedra.index');
     }
 
+    public function mostrar(){
+        
+    }
+
+
     public function show($id)
     {
-        return Catedra::find($id);
+       //
     }
 
     public function edit($id)

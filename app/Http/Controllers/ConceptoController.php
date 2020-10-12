@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Nivel;
 use App\Concepto;
 use App\Alumno;
+use DB;
 
 class ConceptoController extends Controller
 {

@@ -1,3 +1,26 @@
+try
+        {
+            DB::beginTransaction();
+            $cursos=$request->IDCURSO;
+            foreach ($cursos as $cur) 
+            { 
+                $catedra= new Catedra();
+                $catedra->AÑOESCOLAR=$request->AÑOESCOLAR;
+                $catedra->IDDOCENTE=$request->IDDOCENTE;
+                $catedra->IDCURSO=$cur[0];
+                $catedra->save();
+            }
+            DB::commit();
+        }
+        catch(\Exception $e)
+        {
+            dd($e);
+            DB::rollback();
+        }
+        return redirect()->route('catedra.index');
+
+
+
 @extends('layouts.plantilla')
 @section('titulo')
     <h3>Cátedras</h3>
@@ -61,12 +84,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                       
+                        @foreach($catedras as $itemcatedra)
+                            @if ($itemcatedra->IDDOCENTE == 1)
+                            <tr>
+                                <td class="text-center">{{$itemcatedra->cursos->CODIGO}}</th>
+                                <td class="text-center">{{$itemcatedra->docente->APENOM}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->grado->GRADO}}</th>
+                                <td class="text-center">{{$itemcatedra->cursos->seccion->SECCION}}</th>
+                            </tr>
+                            @endif   
+                        @endforeach
                          
                     </tbody>
                 </table>
                 <div class="col-md-2">
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addCatedra"><i class="fa fa-plus"></i> Agregar</a>
-                    <a href="{{ route('catedra.create')}}" class="btn btn-info"><i class="fa fa-search"></i> Mostrar</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addCatedra"><i class="fa fa-plus"></i> Agregar   </a>
+                    {{-- <a href="{{_{{route('catedra.create')}}_route('catedra.confirmar',$itemcatedra->IDCATEDRA)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a> --}}
                 </div>
                 
                 @if(session('datos'))
@@ -82,29 +116,29 @@
 
             <div class="modal fade" id="addCatedra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar curso</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <label for="">Curso</label>
-                                <select class="form-control select2 select2-hidden-accessible selectpicker" name="idcurso" id="idcurso" onchange="agregar();" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true">
-                                    <option selected disabled hidden style='display: none' value='-1'>Seleccione curso</option>
-                                    @foreach ($cursos as $itemcurso)
-                                <option value="{{$itemcurso->IDCURSO}}_{{$itemcurso->CODIGO}}_{{$itemcurso->CURSO}}_{{$itemcurso->grado->GRADO}}_{{$itemcurso->seccion->SECCION}}">{{$itemcurso->grado->GRADO}} - {{$itemcurso->CURSO}} - {{$itemcurso->seccion->SECCION}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <p>Select "Volver" below if you are ready to exit.</p>
-                        </div>
-                        <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
-                        </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar curso</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                     </div>
+                    <div class="modal-body">
+                        <div>
+                            <label for="">Curso</label>
+                            <select class="form-control select2 select2-hidden-accessible selectpicker" name="idcurso" id="idcurso" onchange="agregar();" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" data-live-search="true">
+                                <option selected disabled hidden style='display: none' value='-1'>Seleccione curso</option>
+                                @foreach ($cursos as $itemcurso)
+                            <option value="{{$itemcurso->IDCURSO}}_{{$itemcurso->CODIGO}}_{{$itemcurso->CURSO}}_{{$itemcurso->grado->GRADO}}_{{$itemcurso->seccion->SECCION}}">{{$itemcurso->grado->GRADO}} - {{$itemcurso->CURSO}} - {{$itemcurso->seccion->SECCION}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p>Select "Volver" below if you are ready to exit.</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
+                    </div>
+                </div>
                 </div>
             </div>
             <input id="btnSubmit" type="submit" value="Grabar" class="btn btn-success" onclick="return confirm('Grabar ?')">
