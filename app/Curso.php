@@ -19,8 +19,7 @@ class Curso extends Model
         return $this->belongsTo('App\Grado','IDGRADO','IDGRADO');
     }
 
-    public function seccion()
-    {
+    public function seccion() {
         return $this->belongsTo('App\Seccion','IDSECCION','IDSECCION');
     }
 }
